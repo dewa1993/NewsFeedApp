@@ -2,12 +2,22 @@ package com.upadhyay.newsfeedapplication.model;
 
 public class IntroContent {
 
+    private int id;
     private String description;
     private String imagePath;
 
-    public IntroContent(String description, String imagePath) {
+    public IntroContent(int id, String description, String imagePath) {
+        this.id = id;
         this.description = description;
         this.imagePath = imagePath;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {

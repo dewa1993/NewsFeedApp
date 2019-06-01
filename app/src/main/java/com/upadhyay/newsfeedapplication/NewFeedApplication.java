@@ -2,7 +2,7 @@ package com.upadhyay.newsfeedapplication;
 
 import android.app.Activity;
 import android.app.Application;
-
+import com.upadhyay.newsfeedapplication.di.component.AppInjector;
 
 import javax.inject.Inject;
 
@@ -23,6 +23,7 @@ public class NewFeedApplication extends Application implements HasActivityInject
     @Override
     public void onCreate() {
         super.onCreate();
+        AppInjector.initialize(this);
     }
 
 }

@@ -4,6 +4,8 @@ package com.upadhyay.newsfeedapplication.di.component;
 import android.app.Application;
 
 import com.upadhyay.newsfeedapplication.NewFeedApplication;
+import com.upadhyay.newsfeedapplication.di.modules.ActivityModule;
+import com.upadhyay.newsfeedapplication.di.modules.ApplicationModule;
 
 import javax.inject.Singleton;
 
@@ -14,7 +16,9 @@ import dagger.android.AndroidInjectionModule;
 @ApplicationScope
 @Singleton
 @Component(modules = {
-        AndroidInjectionModule.class
+        AndroidInjectionModule.class,
+        ApplicationModule.class,
+        ActivityModule.class
 })
 public interface ApplicationComponent {
 

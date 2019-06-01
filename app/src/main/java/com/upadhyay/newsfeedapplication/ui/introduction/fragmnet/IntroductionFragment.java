@@ -14,6 +14,7 @@ import com.upadhyay.newsfeedapplication.R;
 
 import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyay.newsfeedapplication.databinding.FragmentIntroductionBinding;
+import com.upadhyay.newsfeedapplication.ui.introduction.adapter.ViewPagerAdapter;
 import com.upadhyay.newsfeedapplication.ui.introduction.contract.IntroductionContract;
 import com.upadhyay.newsfeedapplication.viewmodel.introduction.IntroductionViewModel;
 
@@ -37,6 +38,8 @@ public class IntroductionFragment extends AbstractBaseMainFragment<IntroductionC
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getBinding().tvText.setText("test sting in text view...");
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
+        getBinding().viewPager.setAdapter(viewPagerAdapter);
+        getBinding().tabDots.setupWithViewPager(getBinding().viewPager,true);
     }
 }

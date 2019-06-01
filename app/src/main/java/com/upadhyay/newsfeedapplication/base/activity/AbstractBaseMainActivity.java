@@ -1,7 +1,7 @@
 package com.upadhyay.newsfeedapplication.base.activity;
 
 
-import com.upadhyay.newsfeedapplication.base.navigation.ActivityNavigationController;
+import com.upadhyay.newsfeedapplication.ui.ActivityNavigationController;
 
 public abstract class AbstractBaseMainActivity extends AbstractBaseNormalActivity {
 

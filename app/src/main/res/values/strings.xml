@@ -4,4 +4,7 @@
     <string name="user_name">Enter User Name</string>
     <string name="password">Enter Password</string>
     <string name="text_register_user">No Account Yet ? <ul>Create one</ul></string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+    <string name="text_register">Register</string>
+    <string name="text_login">Login</string>
 </resources>

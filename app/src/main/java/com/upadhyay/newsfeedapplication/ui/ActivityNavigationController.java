@@ -3,6 +3,7 @@ package com.upadhyay.newsfeedapplication.ui;
 
 import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.navigation.AbstractNavigationController;
+import com.upadhyay.newsfeedapplication.ui.feeds.fragment.NewsFeedsFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.IntroductionFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.LoginFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.RegisterUserFragment;
@@ -38,8 +39,13 @@ public class ActivityNavigationController extends AbstractNavigationController {
         updateFragment();
     }
 
-    public void navigateToRegisterScreen(){
+    public void navigateToRegisterScreen() {
         changeFragment(RegisterUserFragment.getInstance(), true);
+        updateFragment();
+    }
+
+    public void navigateToNewsFeedFragment() {
+        changeFragment(NewsFeedsFragment.getInstance(), false);
         updateFragment();
     }
 }

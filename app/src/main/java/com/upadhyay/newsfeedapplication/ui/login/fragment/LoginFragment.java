@@ -12,13 +12,19 @@ import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyay.newsfeedapplication.databinding.FragmentLoginBinding;
 import com.upadhyay.newsfeedapplication.ui.login.contract.LoginContract;
 import com.upadhyay.newsfeedapplication.utils.AppConstants;
+import com.upadhyay.newsfeedapplication.utils.SharedPreferenceHelper;
 import com.upadhyay.newsfeedapplication.utils.StatusConstant;
 import com.upadhyay.newsfeedapplication.viewmodel.login.LoginViewModel;
+
+import javax.inject.Inject;
 
 public class LoginFragment extends AbstractBaseMainFragment<LoginContract, LoginViewModel, FragmentLoginBinding> {
 
     private String userName;
     private String password;
+
+    @Inject
+    SharedPreferenceHelper sharedPreferenceHelper;
 
     public static Fragment getInstance() {
         return new LoginFragment();
@@ -49,9 +55,10 @@ public class LoginFragment extends AbstractBaseMainFragment<LoginContract, Login
                     if (response != null && response.data != null && response.status == StatusConstant.SUCCESS) {
 
                         if (response.data) {
-                            presentToast("Successful Log-in");
+                            sharedPreferenceHelper.putValue(AppConstants.SP_LOGIN, true);
+                            getUiInteraction().getNavigationController().navigateToNewsFeedFragment();
                         } else
-                            presentToast("Invalid Password");
+                            presentToast("Incorrect Password");
 
                     } else if (response != null && response.status == StatusConstant.ERROR) {
                         presentToast(response.message);

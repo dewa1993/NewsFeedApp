@@ -1,6 +1,7 @@
 package com.upadhyay.newsfeedapplication.di.modules;
 
 
+import com.upadhyay.newsfeedapplication.ui.feeds.fragment.NewsFeedsFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.IntroductionFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.PageFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.LoginFragment;
@@ -23,4 +24,7 @@ public abstract class FragmentModule {
 
     @ContributesAndroidInjector
     public abstract RegisterUserFragment contributeRegisterFragment();
+
+    @ContributesAndroidInjector
+    public abstract NewsFeedsFragment contributeNewsFeedFragment();
 }

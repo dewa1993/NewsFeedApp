@@ -11,4 +11,10 @@ public class AppConstants {
     public static final int KEY_LENGTH = 512;
     public static final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     public static final String ALGORITHM = "PBKDF2WithHmacSHA1";
+
+    // Shared preferences
+    public static final String SP_KEY = "com.upadhyde.newsfeedapplication";
+    public static final String SP_LOGIN = "KEY_SP_LOGIN";
+
+
 }

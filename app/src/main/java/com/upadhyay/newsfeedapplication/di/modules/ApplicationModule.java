@@ -8,6 +8,7 @@ import com.upadhyay.newsfeedapplication.db.AppDatabase;
 import com.upadhyay.newsfeedapplication.db.dao.UserRegistrationDao;
 import com.upadhyay.newsfeedapplication.di.component.ApplicationScope;
 import com.upadhyay.newsfeedapplication.utils.AppConstants;
+import com.upadhyay.newsfeedapplication.utils.SharedPreferenceHelper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,6 +21,12 @@ public class ApplicationModule {
     @Provides
     AppDatabase provideDatabase(Application application) {
         return Room.databaseBuilder(application, AppDatabase.class, AppConstants.DATABASE_NAME).build();
+    }
+
+    @ApplicationScope
+    @Provides
+    SharedPreferenceHelper provideSharedPreference(Application application) {
+        return new SharedPreferenceHelper(application);
     }
 
     @ApplicationScope

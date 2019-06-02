@@ -9,17 +9,16 @@ import com.bumptech.glide.Glide;
 import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyay.newsfeedapplication.databinding.FragmentRegisterUserBinding;
-import com.upadhyay.newsfeedapplication.db.table.UserProfile;
 import com.upadhyay.newsfeedapplication.ui.login.contract.LoginContract;
 import com.upadhyay.newsfeedapplication.utils.AppConstants;
 import com.upadhyay.newsfeedapplication.utils.StatusConstant;
 import com.upadhyay.newsfeedapplication.viewmodel.login.LoginViewModel;
 
 
-
 public class RegisterUserFragment extends AbstractBaseMainFragment<LoginContract, LoginViewModel, FragmentRegisterUserBinding> {
 
-    private UserProfile userProfile;
+    private String userName;
+    private String password;
 
     public static Fragment getInstance() {
         return new RegisterUserFragment();
@@ -41,7 +40,7 @@ public class RegisterUserFragment extends AbstractBaseMainFragment<LoginContract
         Glide.with(this).load(AppConstants.LOGO_URL).into(getBinding().ivBackground);
         getBinding().btnRegister.setOnClickListener(click -> {
             if (validateForm()) {
-                getViewModel().saveUserProfile(userProfile).observe(this, response -> {
+                getViewModel().saveUserProfile(userName, password).observe(this, response -> {
                     getBinding().setResource(response);
                     if (response != null && response.data != null && response.status == StatusConstant.SUCCESS) {
                         presentToast("User Registered with Id - " + response.data.getUserId());
@@ -55,8 +54,8 @@ public class RegisterUserFragment extends AbstractBaseMainFragment<LoginContract
     }
 
     private boolean validateForm() {
-        String userName = getBinding().tilUserName.getEditText().getText().toString();
-        String password = getBinding().tilPassword.getEditText().getText().toString();
+        userName = getBinding().tilUserName.getEditText().getText().toString();
+        password = getBinding().tilPassword.getEditText().getText().toString();
         String confirmPassword = getBinding().tilConfirmPassword.getEditText().getText().toString();
         if (userName.isEmpty()) {
             presentToast("Please Specify User Name");
@@ -71,7 +70,6 @@ public class RegisterUserFragment extends AbstractBaseMainFragment<LoginContract
             presentToast("Passwords do not match");
             return false;
         }
-        userProfile = new UserProfile(userName, password);
         return true;
     }
 

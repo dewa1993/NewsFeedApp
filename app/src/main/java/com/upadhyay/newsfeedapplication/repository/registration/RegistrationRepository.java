@@ -7,5 +7,7 @@ import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
 
 public interface RegistrationRepository {
 
-    LiveData<ResourcesResponse<UserProfile>> saveUserProfile(UserProfile userProfile);
+    LiveData<ResourcesResponse<UserProfile>> saveUserProfile(String userName, String password);
+
+    LiveData<ResourcesResponse<Boolean>> verifyUser(String userName, String password);
 }

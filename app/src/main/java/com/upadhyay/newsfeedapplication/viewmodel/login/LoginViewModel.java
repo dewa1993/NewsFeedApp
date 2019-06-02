@@ -26,7 +26,13 @@ public class LoginViewModel extends AbstractViewModel<LoginContract> implements 
     }
 
     @Override
-    public LiveData<ResourcesResponse<UserProfile>> saveUserProfile(UserProfile userProfile) {
-        return registrationRepository.saveUserProfile(userProfile);
+    public LiveData<ResourcesResponse<UserProfile>> saveUserProfile(String userName, String password) {
+        return registrationRepository.saveUserProfile(userName, password);
+    }
+
+
+    @Override
+    public LiveData<ResourcesResponse<Boolean>> verifyUser(String userName, String password) {
+        return registrationRepository.verifyUser(userName, password);
     }
 }

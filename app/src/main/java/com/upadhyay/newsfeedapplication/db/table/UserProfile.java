@@ -17,11 +17,15 @@ public class UserProfile {
     @ColumnInfo(name = "password")
     private String password;
 
+    @ColumnInfo(name = "salt")
+    private String salt;
 
-    public UserProfile(String userName, String password) {
+    public UserProfile(String userName, String password, String salt) {
         this.userName = userName;
         this.password = password;
+        this.salt = salt;
     }
+
 
     public int getUserId() {
         return userId;
@@ -45,5 +49,13 @@ public class UserProfile {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

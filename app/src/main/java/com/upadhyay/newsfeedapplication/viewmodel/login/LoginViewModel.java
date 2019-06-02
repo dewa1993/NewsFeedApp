@@ -4,20 +4,28 @@ import android.arch.lifecycle.LiveData;
 
 import com.upadhyay.newsfeedapplication.base.viewmodel.AbstractViewModel;
 import com.upadhyay.newsfeedapplication.db.table.UserProfile;
-import com.upadhyay.newsfeedapplication.repository.registration.RegistrationRepository;
-import com.upadhyay.newsfeedapplication.repository.registration.RegistrationRepositoryImpl;
+import com.upadhyay.newsfeedapplication.model.IntroContent;
+import com.upadhyay.newsfeedapplication.repository.registration.LoginRepository;
+import com.upadhyay.newsfeedapplication.repository.registration.LoginRepositoryImpl;
 import com.upadhyay.newsfeedapplication.ui.login.contract.LoginContract;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 public class LoginViewModel extends AbstractViewModel<LoginContract> implements LoginContract {
 
-    private RegistrationRepository registrationRepository;
+    private LoginRepository loginRepository;
 
     @Inject
-    LoginViewModel(RegistrationRepositoryImpl registrationRepository) {
-        this.registrationRepository = registrationRepository;
+    LoginViewModel(LoginRepositoryImpl registrationRepository) {
+        this.loginRepository = registrationRepository;
+    }
+
+    @Override
+    public LiveData<ResourcesResponse<List<IntroContent>>> getIntroContent() {
+        return loginRepository.getIntroContent();
     }
 
     @Override
@@ -27,12 +35,12 @@ public class LoginViewModel extends AbstractViewModel<LoginContract> implements 
 
     @Override
     public LiveData<ResourcesResponse<UserProfile>> saveUserProfile(String userName, String password) {
-        return registrationRepository.saveUserProfile(userName, password);
+        return loginRepository.saveUserProfile(userName, password);
     }
 
 
     @Override
     public LiveData<ResourcesResponse<Boolean>> verifyUser(String userName, String password) {
-        return registrationRepository.verifyUser(userName, password);
+        return loginRepository.verifyUser(userName, password);
     }
 }

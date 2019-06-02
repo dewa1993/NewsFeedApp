@@ -3,7 +3,7 @@ package com.upadhyay.newsfeedapplication.ui;
 
 import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.navigation.AbstractNavigationController;
-import com.upadhyay.newsfeedapplication.ui.introduction.fragmnet.IntroductionFragment;
+import com.upadhyay.newsfeedapplication.ui.login.fragment.IntroductionFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.LoginFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.RegisterUserFragment;
 import com.upadhyay.newsfeedapplication.ui.main.MainActivity;

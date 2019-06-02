@@ -1,4 +1,4 @@
-package com.upadhyay.newsfeedapplication.ui.introduction.fragmnet;
+package com.upadhyay.newsfeedapplication.ui.login.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,10 +10,10 @@ import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyay.newsfeedapplication.databinding.FragmentPageBinding;
 import com.upadhyay.newsfeedapplication.model.IntroContent;
-import com.upadhyay.newsfeedapplication.ui.introduction.contract.IntroductionContract;
-import com.upadhyay.newsfeedapplication.viewmodel.introduction.IntroductionViewModel;
+import com.upadhyay.newsfeedapplication.ui.login.contract.LoginContract;
+import com.upadhyay.newsfeedapplication.viewmodel.login.LoginViewModel;
 
-public class PageFragment extends AbstractBaseMainFragment<IntroductionContract, IntroductionViewModel, FragmentPageBinding> {
+public class PageFragment extends AbstractBaseMainFragment<LoginContract, LoginViewModel, FragmentPageBinding> {
 
     private IntroContent introContent;
     private static final int LAST_PAGE = 3;
@@ -25,8 +25,8 @@ public class PageFragment extends AbstractBaseMainFragment<IntroductionContract,
     }
 
     @Override
-    protected Class<IntroductionViewModel> getViewModels() {
-        return IntroductionViewModel.class;
+    protected Class<LoginViewModel> getViewModels() {
+        return LoginViewModel.class;
     }
 
     @Override
@@ -48,6 +48,4 @@ public class PageFragment extends AbstractBaseMainFragment<IntroductionContract,
         getBinding().btnLogin.setOnClickListener(click ->
                 getUiInteraction().getNavigationController().navigateToLoginScreen());
     }
-
-
 }

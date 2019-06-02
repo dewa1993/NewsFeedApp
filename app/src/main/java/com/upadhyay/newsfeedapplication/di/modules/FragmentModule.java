@@ -1,8 +1,8 @@
 package com.upadhyay.newsfeedapplication.di.modules;
 
 
-import com.upadhyay.newsfeedapplication.ui.introduction.fragmnet.IntroductionFragment;
-import com.upadhyay.newsfeedapplication.ui.introduction.fragmnet.PageFragment;
+import com.upadhyay.newsfeedapplication.ui.login.fragment.IntroductionFragment;
+import com.upadhyay.newsfeedapplication.ui.login.fragment.PageFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.LoginFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.RegisterUserFragment;
 

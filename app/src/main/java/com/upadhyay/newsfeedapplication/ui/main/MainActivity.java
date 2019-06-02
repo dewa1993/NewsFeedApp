@@ -26,6 +26,5 @@ public class MainActivity  extends AbstractBaseNormalActivity implements Abstrac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigationController.navigateToIntroduction();
-
     }
 }

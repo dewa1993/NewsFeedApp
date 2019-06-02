@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import com.upadhyay.newsfeedapplication.base.viewmodel.BaseViewModelFactory;
 import com.upadhyay.newsfeedapplication.di.component.ViewModelKey;
-import com.upadhyay.newsfeedapplication.viewmodel.introduction.IntroductionViewModel;
 import com.upadhyay.newsfeedapplication.viewmodel.login.LoginViewModel;
 
 import dagger.Binds;
@@ -16,11 +15,6 @@ public abstract class ViewModelModule {
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(BaseViewModelFactory factory);
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(IntroductionViewModel.class)
-    public abstract ViewModel bindIntroductionViewModel(IntroductionViewModel introductionViewModel);
 
 
     @Binds

@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.upadhyay.newsfeedapplication.R;
+
 public abstract class AbstractNavigationController extends BaseNavigationController {
     private AppCompatActivity activity;
     private Fragment fragmentToChange;
@@ -31,6 +33,7 @@ public abstract class AbstractNavigationController extends BaseNavigationControl
         final boolean isPop = getFragmentManager().popBackStackImmediate(backStackName, 0);
         if (!isPop /*&& getFragmentManager().findFragmentByTag(backStackName) == null*/) {
             final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             fragmentTransaction.replace(provideContainerId(), this.fragmentToChange, backStackName);
             if (this.isBackStack) {

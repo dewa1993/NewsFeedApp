@@ -3,9 +3,14 @@ package com.upadhyay.newsfeedapplication.repository.registration;
 import android.arch.lifecycle.LiveData;
 
 import com.upadhyay.newsfeedapplication.db.table.UserProfile;
+import com.upadhyay.newsfeedapplication.model.IntroContent;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
 
-public interface RegistrationRepository {
+import java.util.List;
+
+public interface LoginRepository {
+
+    LiveData<ResourcesResponse<List<IntroContent>>> getIntroContent();
 
     LiveData<ResourcesResponse<UserProfile>> saveUserProfile(String userName, String password);
 

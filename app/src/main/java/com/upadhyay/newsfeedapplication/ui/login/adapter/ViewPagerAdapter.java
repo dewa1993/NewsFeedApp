@@ -1,11 +1,11 @@
-package com.upadhyay.newsfeedapplication.ui.introduction.adapter;
+package com.upadhyay.newsfeedapplication.ui.login.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.upadhyay.newsfeedapplication.model.IntroContent;
-import com.upadhyay.newsfeedapplication.ui.introduction.fragmnet.PageFragment;
+import com.upadhyay.newsfeedapplication.ui.login.fragment.PageFragment;
 
 import java.util.List;
 

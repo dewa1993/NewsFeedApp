@@ -10,6 +10,7 @@ import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyay.newsfeedapplication.databinding.FragmentLoginBinding;
 import com.upadhyay.newsfeedapplication.ui.login.contract.LoginContract;
+import com.upadhyay.newsfeedapplication.utils.AppConstants;
 import com.upadhyay.newsfeedapplication.viewmodel.login.LoginViewModel;
 
 public class LoginFragment extends AbstractBaseMainFragment<LoginContract, LoginViewModel, FragmentLoginBinding> {
@@ -31,7 +32,7 @@ public class LoginFragment extends AbstractBaseMainFragment<LoginContract, Login
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Glide.with(this).load("https://png.icons8.com/color/newsfeed/96").into(getBinding().ivBackground);
+        Glide.with(this).load(AppConstants.LOGO_URL).into(getBinding().ivBackground);
         getBinding().tvRegisterUser.setOnClickListener(click ->
                 getUiInteraction().getNavigationController().navigateToRegisterScreen());
     }

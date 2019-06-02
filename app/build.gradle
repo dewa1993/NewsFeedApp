@@ -58,5 +58,9 @@ dependencies {
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
 
+    //Room Database
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+
 
 }

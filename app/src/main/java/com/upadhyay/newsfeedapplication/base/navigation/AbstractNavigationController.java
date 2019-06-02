@@ -42,6 +42,10 @@ public abstract class AbstractNavigationController extends BaseNavigationControl
         this.isBackStack = false;
     }
 
+    public void popBackStackImmediate() {
+        getFragmentManager().popBackStackImmediate();
+    }
+
 
     protected abstract @IdRes
     int provideContainerId();

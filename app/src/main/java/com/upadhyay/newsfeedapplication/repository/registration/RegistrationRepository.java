@@ -1,12 +1,11 @@
-package com.upadhyay.newsfeedapplication.ui.login.contract;
+package com.upadhyay.newsfeedapplication.repository.registration;
 
 import android.arch.lifecycle.LiveData;
 
-import com.upadhyay.newsfeedapplication.base.contract.BaseContract;
 import com.upadhyay.newsfeedapplication.db.table.UserProfile;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
 
-public interface LoginContract extends BaseContract {
+public interface RegistrationRepository {
 
     LiveData<ResourcesResponse<UserProfile>> saveUserProfile(UserProfile userProfile);
 }

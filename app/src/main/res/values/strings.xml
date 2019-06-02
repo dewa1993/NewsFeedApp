@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">NewsFeedApplication</string>
+    <string name="app_name">News Feed</string>
     <string name="login_button">Login</string>
+    <string name="user_name">Enter User Name</string>
+    <string name="password">Enter Password</string>
+    <string name="text_register_user">No Account Yet ? <ul>Create one</ul></string>
 </resources>

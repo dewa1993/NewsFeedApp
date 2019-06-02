@@ -3,6 +3,7 @@ package com.upadhyay.newsfeedapplication.di.modules;
 
 import com.upadhyay.newsfeedapplication.ui.introduction.fragmnet.IntroductionFragment;
 import com.upadhyay.newsfeedapplication.ui.introduction.fragmnet.PageFragment;
+import com.upadhyay.newsfeedapplication.ui.login.fragment.LoginFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -15,4 +16,7 @@ public abstract class FragmentModule {
 
     @ContributesAndroidInjector
     public abstract PageFragment contributePageFragment();
+
+    @ContributesAndroidInjector
+    public abstract LoginFragment contributeLoginFragment();
 }

@@ -16,7 +16,7 @@ import com.upadhyay.newsfeedapplication.viewmodel.introduction.IntroductionViewM
 public class PageFragment extends AbstractBaseMainFragment<IntroductionContract, IntroductionViewModel, FragmentPageBinding> {
 
     private IntroContent introContent;
-    private final int LAST_PAGE = 3;
+    private static final int LAST_PAGE = 3;
 
     public static Fragment getInstance(IntroContent introContent) {
         PageFragment pageFragment = new PageFragment();
@@ -42,9 +42,11 @@ public class PageFragment extends AbstractBaseMainFragment<IntroductionContract,
                 into(getBinding().ivBackground);
         getBinding().tvDescription.setText(introContent.getDescription());
 
-        if(introContent.getId() == LAST_PAGE)
+        if (introContent.getId() == LAST_PAGE)
             getBinding().btnLogin.setVisibility(View.VISIBLE);
 
+        getBinding().btnLogin.setOnClickListener(click ->
+                getUiInteraction().getNavigationController().navigateToLoginScreen());
     }
 
 

@@ -1,6 +1,5 @@
 package com.upadhyay.newsfeedapplication.model;
 
-import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -23,17 +22,43 @@ public class FeedItem {
     @Element(name = "enclosure")
     private FeedEnclosure enclosure;
 
-    @Root(name = "enclosure", strict = false)
-    public static class FeedEnclosure {
+    public String getLink() {
+        return link;
+    }
 
-        @Attribute(name = "length", required = false)
-        private String length;
+    public void setLink(String link) {
+        this.link = link;
+    }
 
-        @Attribute(name = "type", required = false)
-        private String type;
+    public String getDescription() {
+        return description;
+    }
 
-        @Attribute(name = "url", required = false)
-        private String url;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
+
+    public FeedEnclosure getEnclosure() {
+        return enclosure;
+    }
+
+    public void setEnclosure(FeedEnclosure enclosure) {
+        this.enclosure = enclosure;
     }
 }

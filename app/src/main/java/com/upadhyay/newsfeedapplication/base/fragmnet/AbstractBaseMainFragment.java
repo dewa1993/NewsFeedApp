@@ -9,8 +9,8 @@ import com.upadhyay.newsfeedapplication.base.viewmodel.AbstractViewModel;
 
 
 public abstract class AbstractBaseMainFragment<P extends BaseContract,
-        VM extends AbstractViewModel<P>, T extends ViewDataBinding>
-        extends AbstractBaseDataBindingFragment<P, VM, T> {
+        V extends AbstractViewModel<P>, T extends ViewDataBinding>
+        extends AbstractBaseDataBindingFragment<P, V, T> {
 
     private AbstractBaseMainActivity.UiInteraction uiInteraction;
 

@@ -13,8 +13,8 @@ import com.upadhyay.newsfeedapplication.base.contract.BaseContract;
 import com.upadhyay.newsfeedapplication.base.viewmodel.AbstractViewModel;
 
 
-public abstract class AbstractBaseDataBindingFragment<P extends BaseContract, VM extends AbstractViewModel<P>, T extends ViewDataBinding>
-        extends AbstractBaseFragment<P, VM> {
+public abstract class AbstractBaseDataBindingFragment<P extends BaseContract, V extends AbstractViewModel<P>, T extends ViewDataBinding>
+        extends AbstractBaseFragment<P, V> {
 
     private T binding;
 

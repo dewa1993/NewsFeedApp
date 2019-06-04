@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuInflater;
 
 import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
@@ -59,16 +57,14 @@ public class NewsFeedsFragment extends AbstractBaseMainFragment<FeedsContract, N
                 android.R.color.holo_red_light);
 
 
-        getBinding().swipeContainer.setOnRefreshListener(() -> {
-
-            getViewModel().getNewsFeeds().observe(this, listResourcesResponse -> {
-                if (listResourcesResponse != null && listResourcesResponse.data != null && listResourcesResponse.status == StatusConstant.SUCCESS) {
-                    feedItemAdapter.clear();
-                    feedItemAdapter.addAll(listResourcesResponse.data);
-                    getBinding().swipeContainer.setRefreshing(false);
-                }
-            });
-        });
+        getBinding().swipeContainer.setOnRefreshListener(() ->
+                getViewModel().getNewsFeeds().observe(this, listResourcesResponse -> {
+                    if (listResourcesResponse != null && listResourcesResponse.data != null && listResourcesResponse.status == StatusConstant.SUCCESS) {
+                        feedItemAdapter.clear();
+                        feedItemAdapter.addAll(listResourcesResponse.data);
+                        getBinding().swipeContainer.setRefreshing(false);
+                    }
+                }));
     }
 
     private void setViewFromResult(List<NewsFeed> newsFeeds) {

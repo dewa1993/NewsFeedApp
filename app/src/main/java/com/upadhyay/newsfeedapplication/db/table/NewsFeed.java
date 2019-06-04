@@ -3,14 +3,17 @@ package com.upadhyay.newsfeedapplication.db.table;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity
+
+@Entity(primaryKeys = {"feedItemId", "title"})
 public class NewsFeed {
 
-    @PrimaryKey(autoGenerate = true)
+    @NonNull
     @ColumnInfo(name = "feedItemId")
     private int feedItemId;
 
+    @NonNull
     @ColumnInfo(name = "title")
     private String title;
 

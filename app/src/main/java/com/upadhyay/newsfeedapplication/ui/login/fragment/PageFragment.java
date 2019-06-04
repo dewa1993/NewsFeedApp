@@ -37,6 +37,7 @@ public class PageFragment extends AbstractBaseMainFragment<LoginContract, LoginV
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getUiInteraction().setToolbar(false);
         Glide.with(this).
                 load(introContent.getImagePath()).
                 into(getBinding().ivBackground);

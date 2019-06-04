@@ -3,6 +3,7 @@ package com.upadhyay.newsfeedapplication.ui;
 
 import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.navigation.AbstractNavigationController;
+import com.upadhyay.newsfeedapplication.ui.feeds.fragment.NewsFeedDetailsFragment;
 import com.upadhyay.newsfeedapplication.ui.feeds.fragment.NewsFeedsFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.IntroductionFragment;
 import com.upadhyay.newsfeedapplication.ui.login.fragment.LoginFragment;
@@ -28,7 +29,7 @@ public class ActivityNavigationController extends AbstractNavigationController {
      */
     public void navigateToIntroduction() {
         changeFragment(IntroductionFragment.getInstance(), false);
-        updateFragment();
+        updateFragment(false);
     }
 
     /*
@@ -36,16 +37,26 @@ public class ActivityNavigationController extends AbstractNavigationController {
      */
     public void navigateToLoginScreen() {
         changeFragment(LoginFragment.getInstance(), false);
-        updateFragment();
+        updateFragment(true);
     }
 
     public void navigateToRegisterScreen() {
         changeFragment(RegisterUserFragment.getInstance(), true);
-        updateFragment();
+        updateFragment(true);
     }
 
     public void navigateToNewsFeedFragment() {
         changeFragment(NewsFeedsFragment.getInstance(), false);
-        updateFragment();
+        updateFragment(true);
+    }
+
+    public void navigateToFeedDetails(String url) {
+        changeFragment(NewsFeedDetailsFragment.getInstance(url), true);
+        updateFragment(true);
+    }
+
+    public void navigateToNewsFeedExistingFragment() {
+        changeFragment(NewsFeedsFragment.getInstance(), false);
+        updateFragment(false);
     }
 }

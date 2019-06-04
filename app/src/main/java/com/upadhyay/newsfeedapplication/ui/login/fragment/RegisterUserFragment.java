@@ -3,6 +3,7 @@ package com.upadhyay.newsfeedapplication.ui.login.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -37,16 +38,20 @@ public class RegisterUserFragment extends AbstractBaseMainFragment<LoginContract
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getUiInteraction().setToolbar(false);
         Glide.with(this).load(AppConstants.LOGO_URL).into(getBinding().ivBackground);
         getBinding().btnRegister.setOnClickListener(click -> {
             if (validateForm()) {
+                getBinding().pbRegistration.setVisibility(View.VISIBLE);
                 getViewModel().saveUserProfile(userName, password).observe(this, response -> {
-                    getBinding().setResource(response);
+
                     if (response != null && response.data != null && response.status == StatusConstant.SUCCESS) {
                         presentToast("User Registered with Id - " + response.data.getUserId());
+                        getBinding().pbRegistration.setVisibility(View.GONE);
                         getUiInteraction().getNavigationController().popBackStackImmediate();
                     } else if (response != null && response.status == StatusConstant.ERROR) {
                         presentToast("Failed to Register User");
+                        getBinding().pbRegistration.setVisibility(View.GONE);
                     }
                 });
             }

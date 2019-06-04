@@ -7,5 +7,7 @@ public abstract class AbstractBaseMainActivity extends AbstractBaseNormalActivit
 
     public interface UiInteraction {
         ActivityNavigationController getNavigationController();
+
+        void setToolbar(boolean toolbar);
     }
 }

@@ -24,16 +24,17 @@ public abstract class AbstractNavigationController extends BaseNavigationControl
         this.isBackStack = addToBackStack;
     }
 
-    protected void updateFragment() {
+    protected void updateFragment(boolean animate) {
         if (this.fragmentToChange == null) {
             return;
         }
         final String backStackName = this.fragmentToChange.getClass().getSimpleName();
 
         final boolean isPop = getFragmentManager().popBackStackImmediate(backStackName, 0);
-        if (!isPop /*&& getFragmentManager().findFragmentByTag(backStackName) == null*/) {
+        if (!isPop) {
             final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+            if (animate)
+                fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             fragmentTransaction.replace(provideContainerId(), this.fragmentToChange, backStackName);
             if (this.isBackStack) {

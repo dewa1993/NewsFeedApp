@@ -3,6 +3,7 @@ package com.upadhyay.newsfeedapplication.base.activity;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 
 import com.upadhyay.newsfeedapplication.R;
@@ -17,16 +18,28 @@ public abstract class AbstractBaseNormalActivity extends AppCompatActivity imple
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
+    @Override
+    public DispatchingAndroidInjector<Fragment> supportFragmentInjector() {
+        return dispatchingAndroidInjector;
+    }
+
+    public void updateToolbar(final boolean isBackNavigation, final String title) {
+        updateToolbar(isBackNavigation, title, null);
+    }
+
     public void updateToolbar(final boolean isBackNavigation, final String title, final ToolbarListener toolbarListener) {
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar == null) {
             return;
         }
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(isBackNavigation);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setTitle(title);
+        }
 
-        getSupportActionBar().setTitle(title);
+
 
         toolbar.setNavigationOnClickListener(view -> {
             if (toolbarListener == null) {
@@ -37,14 +50,5 @@ public abstract class AbstractBaseNormalActivity extends AppCompatActivity imple
         });
     }
 
-
-    @Override
-    public DispatchingAndroidInjector<Fragment> supportFragmentInjector() {
-        return dispatchingAndroidInjector;
-    }
-
-    public interface ToolbarListener {
-        void toolbarButtonPressed();
-    }
 
 }

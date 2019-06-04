@@ -28,6 +28,7 @@ public abstract class AbstractBaseDataBindingFragment<P extends BaseContract, VM
     @Override
     public final View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayout(), container, false);
+        setHasOptionsMenu(true);
         return binding.getRoot();
     }
 

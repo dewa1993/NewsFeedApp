@@ -10,6 +10,8 @@ import com.upadhyay.newsfeedapplication.repository.feeds.FeedRepositoryImpl;
 import com.upadhyay.newsfeedapplication.ui.feeds.contract.FeedsContract;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
 
+import org.jsoup.nodes.Document;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,5 +33,10 @@ public class NewsFeedViewModel extends AbstractViewModel<FeedsContract> implemen
     @Override
     public LiveData<ResourcesResponse<List<NewsFeed>>> getNewsFeeds() {
         return feedRepository.getNewsFeeds();
+    }
+
+    @Override
+    public LiveData<ResourcesResponse<Document>> getCleanUpDocument(String baseUrl) {
+        return feedRepository.getCleanUpDocument(baseUrl);
     }
 }

@@ -43,6 +43,7 @@ public class LoginFragment extends AbstractBaseMainFragment<LoginContract, Login
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getUiInteraction().setToolbar(false);
         Glide.with(this).load(AppConstants.LOGO_URL).into(getBinding().ivBackground);
 
         getBinding().tvRegisterUser.setOnClickListener(click ->
@@ -50,8 +51,9 @@ public class LoginFragment extends AbstractBaseMainFragment<LoginContract, Login
 
         getBinding().btnLogin.setOnClickListener(click -> {
             if (validate()) {
+                getBinding().pbRegistration.setVisibility(View.VISIBLE);
                 getViewModel().verifyUser(userName, password).observe(this, response -> {
-                    getBinding().setResource(response);
+
                     if (response != null && response.data != null && response.status == StatusConstant.SUCCESS) {
 
                         if (response.data) {
@@ -60,8 +62,11 @@ public class LoginFragment extends AbstractBaseMainFragment<LoginContract, Login
                         } else
                             presentToast("Incorrect Password");
 
+                        getBinding().pbRegistration.setVisibility(View.GONE);
+
                     } else if (response != null && response.status == StatusConstant.ERROR) {
                         presentToast(response.message);
+                        getBinding().pbRegistration.setVisibility(View.GONE);
                     }
                 });
             }

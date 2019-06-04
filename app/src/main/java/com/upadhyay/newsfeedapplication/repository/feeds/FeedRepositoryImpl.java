@@ -12,6 +12,10 @@ import com.upadhyay.newsfeedapplication.network.NewsService;
 import com.upadhyay.newsfeedapplication.utils.AppExecutors;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,4 +109,35 @@ public class FeedRepositoryImpl implements FeedRepository {
 
     }
 
+
+    @Override
+    public LiveData<ResourcesResponse<Document>> getCleanUpDocument(String baseUrl) {
+        MutableLiveData<ResourcesResponse<Document>> resourcesResponseMutableLiveData = new MutableLiveData<>();
+
+        appExecutors.getDiskOp().execute(() -> {
+            Document document = null;
+            try {
+                document = Jsoup.connect(baseUrl).userAgent("Opera/12.02 (Android 4.1; Linux; Opera Mobi/ADR-1111101157; U; en-US) Presto/2.9.201 Version/12.02").get();
+                document.getElementsByClass("header").remove();
+                document.getElementsByClass("overlay").remove();
+                document.getElementsByClass("footer_actions").remove();
+                document.getElementsByClass("lowend_nav").remove();
+                document.getElementsByClass("footer_container").remove();
+                document.getElementsByClass("sticky_ad_header").remove();
+                document.getElementsByClass("article_comments_share").remove();
+                document.getElementsByClass("article_byline").remove();
+                document.getElementsByClass("social_sharing_bottom").remove();
+                document.getElementsByClass("OUTBRAIN").remove();
+                document.getElementsByClass("header-ad 24advert southernx").remove();
+                document.getElementsByClass("page_content content_with_ad content").removeClass("page_content content_with_ad content");
+
+                resourcesResponseMutableLiveData.postValue(ResourcesResponse.success(document));
+
+            } catch (IOException e) {
+                resourcesResponseMutableLiveData.postValue(ResourcesResponse.error("Error Parsing HTML", document));
+            }
+        });
+
+        return resourcesResponseMutableLiveData;
+    }
 }

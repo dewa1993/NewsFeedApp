@@ -33,7 +33,7 @@ public class IntroductionFragment extends AbstractBaseMainFragment<LoginContract
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        getUiInteraction().setToolbar(false);
         getViewModel().getIntroContent().observe(this, listResourcesResponse -> {
             if (listResourcesResponse != null && listResourcesResponse.data != null && listResourcesResponse.status == StatusConstant.SUCCESS) {
                 ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getFragmentManager(), listResourcesResponse.data);

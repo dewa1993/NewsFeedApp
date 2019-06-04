@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-//This class is only used when there is no parameter constructor available in viewModelClass.
+/*
+ * This class is only used when there is no parameter constructor available in viewModelClass.
+ * */
 public class BaseViewModelFactory implements ViewModelProvider.Factory {
 
     private final Map<Class<? extends ViewModel>, Provider<ViewModel>> creators;

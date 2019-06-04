@@ -7,11 +7,13 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.upadhyay.newsfeedapplication.R;
 import com.upadhyay.newsfeedapplication.base.fragmnet.AbstractBaseMainFragment;
 import com.upadhyay.newsfeedapplication.databinding.FragmentFeedDetailsBinding;
 import com.upadhyay.newsfeedapplication.ui.feeds.contract.FeedsContract;
+import com.upadhyay.newsfeedapplication.utils.AppConstants;
 import com.upadhyay.newsfeedapplication.utils.StatusConstant;
 import com.upadhyay.newsfeedapplication.viewmodel.feeds.NewsFeedViewModel;
 
@@ -45,6 +47,8 @@ public class NewsFeedDetailsFragment extends AbstractBaseMainFragment<FeedsContr
         getViewModel().getCleanUpDocument(url).observe(this, documentResourcesResponse -> {
             if (documentResourcesResponse != null && documentResourcesResponse.data != null && documentResourcesResponse.status == StatusConstant.SUCCESS) {
                 setWebViewWithDocument(documentResourcesResponse.data);
+            } else if (documentResourcesResponse != null && documentResourcesResponse.status == StatusConstant.ERROR) {
+                Toast.makeText(getContext(), "Some Error in fetching data", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -56,14 +60,14 @@ public class NewsFeedDetailsFragment extends AbstractBaseMainFragment<FeedsContr
         getBinding().webView.getSettings().setDomStorageEnabled(true);
         getBinding().webView.getSettings().setDatabaseEnabled(true);
         getBinding().webView.getSettings().setAppCacheEnabled(true);
-        getBinding().webView.loadData(document.toString(), "text/html", "utf-8");
+        getBinding().webView.loadData(document.toString(), AppConstants.MIME_TYPE, AppConstants.ENCODING_TYPE);
         getBinding().webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
                 if (newProgress == 100) {
                     getBinding().pbWebView.setVisibility(View.GONE);
                 }
-                super.onProgressChanged(view, newProgress);
             }
         });
     }

@@ -50,6 +50,7 @@ public class ApplicationModule {
     UserRegistrationDao provideUserRegistrationDao(AppDatabase appDatabase) {
         return appDatabase.provideUserRegistrationDao();
     }
+
     @ApplicationScope
     @Provides
     NewsFeedDao provideNewsFeedDao(AppDatabase appDatabase) {

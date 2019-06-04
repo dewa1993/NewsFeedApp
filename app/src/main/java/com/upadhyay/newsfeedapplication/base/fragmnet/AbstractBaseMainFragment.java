@@ -7,6 +7,9 @@ import com.upadhyay.newsfeedapplication.base.activity.AbstractBaseMainActivity;
 import com.upadhyay.newsfeedapplication.base.contract.BaseContract;
 import com.upadhyay.newsfeedapplication.base.viewmodel.AbstractViewModel;
 
+/*
+ * Abstraction layer to provide Fragment navigation
+ * */
 
 public abstract class AbstractBaseMainFragment<P extends BaseContract,
         V extends AbstractViewModel<P>, T extends ViewDataBinding>

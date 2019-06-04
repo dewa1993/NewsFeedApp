@@ -6,6 +6,7 @@ import android.arch.lifecycle.MutableLiveData;
 import com.upadhyay.newsfeedapplication.db.dao.UserRegistrationDao;
 import com.upadhyay.newsfeedapplication.db.table.UserProfile;
 import com.upadhyay.newsfeedapplication.model.IntroContent;
+import com.upadhyay.newsfeedapplication.utils.AppConstants;
 import com.upadhyay.newsfeedapplication.utils.AppExecutors;
 import com.upadhyay.newsfeedapplication.utils.PasswordUtils;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
@@ -36,9 +37,9 @@ public class LoginRepositoryImpl implements LoginRepository {
     public LiveData<ResourcesResponse<List<IntroContent>>> getIntroContent() {
         MutableLiveData<ResourcesResponse<List<IntroContent>>> responseMutableLiveData = new MutableLiveData<>();
         List<IntroContent> introContents = new ArrayList<>();
-        IntroContent page1 = new IntroContent(1, "Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum", "https://png.icons8.com/color/facebook/96");
-        IntroContent page2 = new IntroContent(2, "Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum", "https://png.icons8.com/color/gmail/96");
-        IntroContent page3 = new IntroContent(3, "Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum Lorsum Ipsum", "https://png.icons8.com/color/instagram/96");
+        IntroContent page1 = new IntroContent(1, AppConstants.DUMMY_CONTENT, AppConstants.DUMMY_CONTENT_ICON_1);
+        IntroContent page2 = new IntroContent(2, AppConstants.DUMMY_CONTENT, AppConstants.DUMMY_CONTENT_ICON_2);
+        IntroContent page3 = new IntroContent(3, AppConstants.DUMMY_CONTENT, AppConstants.DUMMY_CONTENT_ICON_3);
         introContents.add(page1);
         introContents.add(page2);
         introContents.add(page3);

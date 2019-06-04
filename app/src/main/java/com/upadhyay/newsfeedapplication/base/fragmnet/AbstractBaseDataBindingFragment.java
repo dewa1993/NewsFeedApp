@@ -13,6 +13,9 @@ import com.upadhyay.newsfeedapplication.base.contract.BaseContract;
 import com.upadhyay.newsfeedapplication.base.viewmodel.AbstractViewModel;
 
 
+/*
+ * Add Data Binding layer to Abstract Fragment
+ * */
 public abstract class AbstractBaseDataBindingFragment<P extends BaseContract, V extends AbstractViewModel<P>, T extends ViewDataBinding>
         extends AbstractBaseFragment<P, V> {
 

@@ -9,6 +9,7 @@ import com.upadhyay.newsfeedapplication.db.table.NewsFeed;
 import com.upadhyay.newsfeedapplication.model.FeedItem;
 import com.upadhyay.newsfeedapplication.model.FeedRss;
 import com.upadhyay.newsfeedapplication.network.NewsService;
+import com.upadhyay.newsfeedapplication.utils.AppConstants;
 import com.upadhyay.newsfeedapplication.utils.AppExecutors;
 import com.upadhyay.newsfeedapplication.utils.ResourcesResponse;
 
@@ -37,6 +38,11 @@ public class FeedRepositoryImpl implements FeedRepository {
         this.newsService = newsService;
         this.newsFeedDao = newsFeedDao;
     }
+
+    /*
+     * Method used Retrofit to call Feed Service and save response in SQL-Lite
+     * In-case of Network Failure response will be returned directly from SQl-Lite
+     * */
 
     @Override
     public LiveData<ResourcesResponse<List<NewsFeed>>> getNewsFeeds() {
@@ -110,6 +116,10 @@ public class FeedRepositoryImpl implements FeedRepository {
     }
 
 
+    /*
+     * Connects to url and generate document to perform clean up on HTML
+     *  */
+
     @Override
     public LiveData<ResourcesResponse<Document>> getCleanUpDocument(String baseUrl) {
         MutableLiveData<ResourcesResponse<Document>> resourcesResponseMutableLiveData = new MutableLiveData<>();
@@ -117,19 +127,19 @@ public class FeedRepositoryImpl implements FeedRepository {
         appExecutors.getDiskOp().execute(() -> {
             Document document = null;
             try {
-                document = Jsoup.connect(baseUrl).userAgent("Opera/12.02 (Android 4.1; Linux; Opera Mobi/ADR-1111101157; U; en-US) Presto/2.9.201 Version/12.02").get();
-                document.getElementsByClass("header").remove();
-                document.getElementsByClass("overlay").remove();
-                document.getElementsByClass("footer_actions").remove();
-                document.getElementsByClass("lowend_nav").remove();
-                document.getElementsByClass("footer_container").remove();
-                document.getElementsByClass("sticky_ad_header").remove();
-                document.getElementsByClass("article_comments_share").remove();
-                document.getElementsByClass("article_byline").remove();
-                document.getElementsByClass("social_sharing_bottom").remove();
-                document.getElementsByClass("OUTBRAIN").remove();
-                document.getElementsByClass("header-ad 24advert southernx").remove();
-                document.getElementsByClass("page_content content_with_ad content").removeClass("page_content content_with_ad content");
+                document = Jsoup.connect(baseUrl).userAgent(AppConstants.REQUEST_AGENT).get();
+                document.getElementsByClass(AppConstants.HTML_JUNK_1).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_2).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_3).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_4).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_5).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_6).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_7).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_8).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_9).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_10).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_11).remove();
+                document.getElementsByClass(AppConstants.HTML_JUNK_12).removeClass(AppConstants.HTML_JUNK_12);
 
                 resourcesResponseMutableLiveData.postValue(ResourcesResponse.success(document));
 

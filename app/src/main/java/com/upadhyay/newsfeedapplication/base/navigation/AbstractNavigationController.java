@@ -23,6 +23,12 @@ public abstract class AbstractNavigationController extends BaseNavigationControl
         this.isBackStack = addToBackStack;
     }
 
+    /*
+     * Checks fragment in backstack before performing fragmnet transaction
+     * Pops fragment is already exist in backstack
+     * animate fragment according to @Params animate
+     * */
+
     protected void updateFragment(boolean animate) {
         if (this.fragmentToChange == null) {
             return;

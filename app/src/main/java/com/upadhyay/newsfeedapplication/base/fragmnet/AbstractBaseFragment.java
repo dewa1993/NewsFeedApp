@@ -15,6 +15,10 @@ import com.upadhyay.newsfeedapplication.base.viewmodel.AbstractViewModel;
 
 import javax.inject.Inject;
 
+/*
+ * Used to Attach View Model to fragment with defined Contract
+ * */
+
 public abstract class AbstractBaseFragment<P extends BaseContract, V extends AbstractViewModel<P>>
         extends Fragment implements InjectableFragment {
 

@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-
 import com.upadhyay.newsfeedapplication.R;
 
 import javax.inject.Inject;
@@ -22,6 +21,10 @@ public abstract class AbstractBaseNormalActivity extends AppCompatActivity imple
         return dispatchingAndroidInjector;
     }
 
+    /*
+     * helps to update toolbar from any fragment under @class NavigationController
+     */
+
     public void updateToolbar(final boolean isBackNavigation, final String title) {
         updateToolbar(isBackNavigation, title, null);
     }
@@ -37,7 +40,6 @@ public abstract class AbstractBaseNormalActivity extends AppCompatActivity imple
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setTitle(title);
         }
-
 
 
         toolbar.setNavigationOnClickListener(view -> {

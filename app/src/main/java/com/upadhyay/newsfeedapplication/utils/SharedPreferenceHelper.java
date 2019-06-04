@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 
+import java.util.Objects;
+
 import javax.inject.Inject;
 
 public class SharedPreferenceHelper {
@@ -52,7 +54,7 @@ public class SharedPreferenceHelper {
     }
 
     public int getIntFromString(final String key) {
-        return Integer.parseInt(sharedPreferences.getString(key, "0"));
+        return Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString(key, "0")));
     }
 
     public void clear() {
